@@ -5,9 +5,48 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ececee;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.global{
+  
+  min-height: 100vh;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  /* align-items: top; */
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.Cases{
+  background-color: rgb(159, 180, 219);
+  display: flex;
+  height: fit-content;
+  width: auto;
+  padding: 5px;
+  border: 2px solid rgb(95, 95, 216);
+  border-radius: 20px;
+}
+.Recovered{
+  background-color: rgb(200, 240, 218);
+  display: flex;
+  height: fit-content;
+  width: auto;
+  padding: 5px;
+  border-radius: 20px; 
+  border: 2px solid #95c551;
+}
+.Deaths{
+  background-color: rgb(233, 142, 149);
+  display: flex;
+  height: fit-content;
+  width: auto;
+  padding: 5px;
+  border-radius: 20px; 
+  border: 2px solid blue;
 }
