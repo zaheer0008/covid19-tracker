@@ -12,41 +12,55 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.item1 { grid-area: raca; }
+.item2 { grid-area: racb; }
+.item3 { grid-area: racc; }
+.item4 { grid-area: rbca; }
+.item5 { grid-area: rbcb; }
+.item6 { grid-area: rbcc; }
+
 .global{
-  
-  min-height: 100vh;
-  height: fit-content;
-  display: flex;
-  flex-direction: row;
-  /* align-items: top; */
+  display: grid;
+  grid-template-areas:
+    'raca racb racc'
+    'rbca rbcb rbcc';
+  grid-gap: 50px;
   justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.Cases{
-  background-color: rgb(159, 180, 219);
-  display: flex;
-  height: fit-content;
-  width: auto;
+
+.global > div {
+  height: max-content;
   padding: 5px;
-  border: 2px solid rgb(95, 95, 216);
-  border-radius: 20px;
 }
+
+.Cases{
+        padding: 4px;
+        text-align: 'center';
+        color: black;
+        opacity: '30';
+        border-radius: '20px';
+        background: linear-gradient(45deg, lightblue 30%, rgb(126, 190, 211) 50%);
+}
+.Cases:hover{
+  background: linear-gradient(45deg, #9e9ea5 30%, #b2b3cc 90%);
+}
+
 .Recovered{
-  background-color: rgb(200, 240, 218);
+  background: linear-gradient(45deg, rgb(121, 250, 121) 30%, rgb(104, 245, 104)  50%);
   display: flex;
-  height: fit-content;
-  width: auto;
-  padding: 5px;
   border-radius: 20px; 
-  border: 2px solid #95c551;
+  border: 2px solid #1f5e2f;
 }
 .Deaths{
-  background-color: rgb(233, 142, 149);
+  background: linear-gradient(45deg, rgb(202, 100, 117) 30%, rgb(202, 122, 135) 50%);
   display: flex;
-  height: fit-content;
-  width: auto;
-  padding: 5px;
   border-radius: 20px; 
   border: 2px solid blue;
+  /* grid-area: racc; */
+}
+.Deaths > p {
+  color: rgb(194, 62, 62);
 }
