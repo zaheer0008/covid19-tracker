@@ -5,19 +5,23 @@ import { Suspense } from 'react';
 import ErrorBoundary from './components/ErrorBoundary'
 import { Container } from '@material-ui/core';
 import CountryStats from './components/CountryStats';
+import GlobalTimeSeriesData from "./components/GlobalTimeSeriesData";
 
 function App() {
-  
   return (
-      <Container className="spinner-grow text-light" maxWidth="md"> 
+      <Container className="spinner-grow text-light" maxWidth="md">
         <Suspense fallback={<h2>Loading Global Data</h2>}>
           <ErrorBoundary>
             <GlobalStats />
-                <CountryStats />
+              
           </ErrorBoundary>
         </Suspense>
-      </Container>
+              <GlobalTimeSeriesData />
+                <CountryStats />
+      </Container> 
   );
 }
+
+
 
 export default App;
