@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import { CountryTimeSeriesChart } from '../CovidCharts';
 var countryStatsUrl = 'https://disease.sh/v3/covid-19/countries/';
 
 
@@ -21,6 +22,8 @@ function CountryStats(){
             setResponse(res);
             console.log(res);
         })
+        let ctx = document.getElementById("CountryChart");
+        CountryTimeSeriesChart(ctx,name);
     }
     const useStyles = makeStyles((theme) => ({
       root: {
@@ -92,7 +95,9 @@ function CountryStats(){
                     <Paper className={classes.deaths}>Today Deaths:<p><strong> {response.todayDeaths}</strong></p></Paper>
                     </Grid>
                 </Grid>
-                
+                <canvas id="CountryChart" width="400" height="400" aria-label="Hello ARIA World" role="img">
+            
+                </canvas>
             </Container>
     )
 }

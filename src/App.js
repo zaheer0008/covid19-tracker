@@ -6,6 +6,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import { Container } from '@material-ui/core';
 import CountryStats from './components/CountryStats';
 import GlobalTimeSeriesData from "./components/GlobalTimeSeriesData";
+import { CountryTimeSeriesChart, GlobalTimeSeriesChart } from "./CovidCharts"
 
 function App() {
   return (
@@ -18,10 +19,14 @@ function App() {
         </Suspense>
               <GlobalTimeSeriesData />
                 <CountryStats />
+                {/* <CountryTimeSeriesData /> */}
       </Container> 
   );
 }
-
+window.onload = ()=>{
+  CountryTimeSeriesChart(document.getElementById("CountryChart"));
+  GlobalTimeSeriesChart(document.getElementById("GlobalChart"));
+}
 
 
 export default App;
