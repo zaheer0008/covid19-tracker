@@ -40,16 +40,16 @@ var tChartOptions = {
         point:{
             radius: 0
         }
-    }
-
+    },
 };
 
-function CountryTimeSeriesChart(ctx, data) {
+function CountryTimeSeriesChart(ctx, data, titleText) {
     var timeSeriesChart = new Chart(ctx, {
         type: 'line',
         data: tChartData,
         options: tChartOptions
     });
+    timeSeriesChart.options.title = {display: true, text: "Historical data for "+titleText};
     var dates = Object.keys(data.timeline.cases);
     var activeCases = Object.values(data.timeline.cases);
     var recovered = Object.values(data.timeline.recovered);

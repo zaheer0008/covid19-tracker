@@ -13,7 +13,7 @@ function CountryStats(props){
     const response = resource.cTotals.read();
     const counteries =React.useContext(CountryContext)[0];
     const timeSeriesResult = props.resource.cTimeSeriesData.read();
-    CountryTimeSeriesChart(document.getElementById("CountryChart").getContext('2d'), timeSeriesResult);
+    CountryTimeSeriesChart(document.getElementById("CountryChart").getContext('2d'), timeSeriesResult, props.countryName);
     
     const useStyles = makeStyles((theme) => ({
       root: {

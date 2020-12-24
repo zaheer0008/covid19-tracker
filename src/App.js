@@ -26,11 +26,7 @@ function App() {
           <canvas id="GlobalChart" width="400" height="400" aria-label="Global Time Series Data" role="img">
           
           </canvas>
-      </Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary>
-      <Suspense fallback={<div>Loading....</div>}>
-        <CountryStats onCountryChange={ChangeAction} resource= {src} />
+          <CountryStats onCountryChange={ChangeAction} countryName={countryName} resource= {src} />
       </Suspense>
       </ErrorBoundary>
       <canvas id="CountryChart" width="400" height="400" aria-label="Country Time Series Data" role="img">
