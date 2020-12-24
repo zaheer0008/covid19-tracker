@@ -1,30 +1,20 @@
 import React, { useState } from 'react';  
-import {fetchAllCountries} from '../api/endpoints';
 import CountryContext from '../context/CountryContext';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import { CountryTimeSeriesChart } from '../CovidCharts';
-var countryStatsUrl = 'https://disease.sh/v3/covid-19/countries/';
+import { CountryTimeSeriesChart } from "../CovidCharts";
+import { fetchCountryData } from '../api/endpoints';
 
-
-function CountryStats(){
-    const [response, setResponse] = useState({});
+// var resource = fetchCountryData(countryNmae);
+function CountryStats(props){
+    const resource = props.resource;
+    const response = resource.cTotals.read();
     const counteries =React.useContext(CountryContext)[0];
-
-    const ChangeAction = ()=>{
-        let name = document.getElementById("ddlSelectCountry").value;
-        console.log("fetching for "+name );
-        fetch(countryStatsUrl+name)
-        .then((res)=>res.json())
-        .then((res)=>{
-            setResponse(res);
-            console.log(res);
-        })
-        let ctx = document.getElementById("CountryChart");
-        CountryTimeSeriesChart(ctx,name);
-    }
+    const timeSeriesResult = props.resource.cTimeSeriesData.read();
+    CountryTimeSeriesChart(document.getElementById("CountryChart").getContext('2d'), timeSeriesResult);
+    
     const useStyles = makeStyles((theme) => ({
       root: {
         flexGrow: 1,
@@ -34,7 +24,7 @@ function CountryStats(){
         textAlign: 'center',        
         color: 'white',
         borderRadius: '20px',
-        background: 'DarkOrchid', //'linear-gradient(45deg,  lightblue 30%, rgb(126, 190, 211) 50%)',
+        background: 'DarkOrchid', 
         '&:hover': {
           background: 'DarkMagenta',
         }
@@ -66,7 +56,7 @@ function CountryStats(){
             <Container maxWidth='md'>
                 <div>
                     <h2>Please select country to view data.</h2>
-                    <select id="ddlSelectCountry" onChange={ChangeAction}>
+                    <select id="ddlSelectCountry" onChange={props.onCountryChange}>
                         {counteries.map((country)=>(
                             <option key={country.name} value={country.name}> {country.name} </option>
                         ))}
@@ -95,9 +85,6 @@ function CountryStats(){
                     <Paper className={classes.deaths}>Today Deaths:<p><strong> {response.todayDeaths}</strong></p></Paper>
                     </Grid>
                 </Grid>
-                <canvas id="CountryChart" width="400" height="400" aria-label="Hello ARIA World" role="img">
-            
-                </canvas>
             </Container>
     )
 }

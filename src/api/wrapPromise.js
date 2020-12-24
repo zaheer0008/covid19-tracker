@@ -1,35 +1,36 @@
 function wrapPromise(promise) {
-    let status = "pending"
-    let response
-  
-    const suspender = promise.then(
-      (res) => {
-        status = "success"
-        response = res
-      },
-      (err) => {
-        status = "error"
-        response = err
-      },
-    );
+  let status = "pending"
+  let response
 
-    const read = () => {
-        switch (status) {
-          case "pending":
-            throw suspender
-          case "error":
-            console.log(response)
-            throw response
-          case "success":
-            console.log(response)
-            return response
-          default:
-            console.log(response)
-            return response
-        }
-      }
-    
-      return { read }
+  const suspender = promise.then(
+    (res) => {
+      status = "success"
+      response = res
+    },
+    (err) => {
+      status = "error"
+      response = err
+    },
+  );
+
+  const read = () => {
+    switch (status) {
+      case "pending":
+        console.log("status: pending, thrown suspender");
+        throw suspender
+      case "error":
+        console.log(response)
+        throw response
+      case "success":
+        console.log(response)
+        return response
+      default:
+        console.log(response)
+        return response
     }
-    
-    export default wrapPromise
+  }
+
+  return { read }
+}
+
+export default wrapPromise

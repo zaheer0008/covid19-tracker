@@ -1,13 +1,17 @@
-import {fetchGlobalStats, fetchGlobalTimeSeries} from '../api/endpoints'
+import {fetchGlobalStats} from '../api/endpoints'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import { useState } from "react";
+import { GlobalTimeSeriesChart } from "../CovidCharts";
 
-const resource = fetchGlobalStats();
 
+ const resource = fetchGlobalStats();
 function GlobalStats() {
-    const stats = resource.read();
+    const stats = resource.totals.read();
+    const timeSeriesResult = resource.timeSeriesData.read();
+    GlobalTimeSeriesChart(document.getElementById("GlobalChart"), timeSeriesResult);
 
     const useStyles = makeStyles((theme) => ({
       root: {
@@ -47,11 +51,16 @@ function GlobalStats() {
     const classes = useStyles();
 
   return (
-    <Container maxWidth="md">
-      <h2>World Totals:</h2>
+    <Container maxWidth="md" className="full-height">
+      {/* <Grid Container spacing={3}>
+        <Grid item xs>
+          <h2>Global Data</h2>
+        </Grid>
+      </Grid> */}
+      
       <Grid container spacing={3}>
         <Grid item xs>
-          <Paper className={classes.cases}>Total Cases<p> <strong>{stats.cases}</strong> </p></Paper>
+          <Paper elevation={3} className={classes.cases}>Total Cases<p> <strong>{stats.cases}</strong> </p></Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.recovered}>Total Recovered<p><strong> {stats.recovered}</strong></p></Paper>
