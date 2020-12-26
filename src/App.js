@@ -20,10 +20,10 @@ function App() {
           <GlobalStats />
           <canvas id="GlobalChart" width="400" height="400" aria-label="Global Time Series Data" role="img">
           
-          </canvas>
+          </canvas><CountryDropdown />
       </Suspense>
       </ErrorBoundary>
-      <CountryDropdown />
+      
       <canvas id="CountryChart" width="400" height="400" aria-label="Country Time Series Data" role="img">
             
       </canvas>
