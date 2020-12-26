@@ -54,14 +54,6 @@ function CountryStats(props){
     
     return(
             <Container maxWidth='md'>
-                <div>
-                    <h2>Please select country to view data.</h2>
-                    <select id="ddlSelectCountry" onChange={props.onCountryChange}>
-                        {counteries.map((country)=>(
-                            <option key={country.name} value={country.name}> {country.name} </option>
-                        ))}
-                    </select>
-                </div>
                 <h3 className="error">{response.message}</h3>
                 <Grid container spacing={3}>
                     <Grid item xs>
