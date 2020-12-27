@@ -20,7 +20,7 @@ function CountryStats(props){
         flexGrow: 1,
       },
       cases: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         textAlign: 'center',        
         color: 'white',
         borderRadius: '20px',
@@ -30,7 +30,7 @@ function CountryStats(props){
         }
       },
       recovered: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         textAlign: 'center',        
         color: 'white',
         borderRadius: '20px',
@@ -40,7 +40,7 @@ function CountryStats(props){
         }
       },
       deaths: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         textAlign: 'center',        
         color: 'white',
         borderRadius: '20px',
@@ -53,31 +53,31 @@ function CountryStats(props){
     const classes = useStyles();
     
     return(
-            <Container maxWidth='md'>
+            <div>
                 <h3 className="error">{response.message}</h3>
                 <Grid container spacing={3}>
                     <Grid item xs>
-                    <Paper className={classes.cases}>Total Cases:<p> <strong>{response.cases}</strong> </p></Paper>
+                    <Paper className={classes.cases}>Total Cases<p> <strong>{response.cases}</strong> </p></Paper>
                     </Grid>
                     <Grid item xs>
-                    <Paper className={classes.recovered}>Total Recovered:<p><strong> {response.recovered}</strong></p></Paper>
+                    <Paper className={classes.recovered}>Total Recovered<p><strong> {response.recovered}</strong></p></Paper>
                     </Grid>
                     <Grid item xs>
-                    <Paper className={classes.deaths}>Total Deaths:<p><strong> {response.deaths} </strong></p></Paper>
+                    <Paper className={classes.deaths}>Total Deaths<p><strong> {response.deaths} </strong></p></Paper>
                     </Grid>
                 </Grid>
                 <Grid container spacing={3}>
                     <Grid item xs>
-                    <Paper className={classes.cases}>Today Cases:<p><strong> {response.todayCases} </strong></p></Paper>
+                    <Paper className={classes.cases}>Today Cases<p><strong> {response.todayCases} </strong></p></Paper>
                     </Grid>
                     <Grid item xs>
-                    <Paper className={classes.recovered}>Today Recovered:<p><strong> {response.todayRecovered}</strong></p></Paper>
+                    <Paper className={classes.recovered}>Today Recovered<p><strong> {response.todayRecovered}</strong></p></Paper>
                     </Grid>
                     <Grid item xs>
-                    <Paper className={classes.deaths}>Today Deaths:<p><strong> {response.todayDeaths}</strong></p></Paper>
+                    <Paper className={classes.deaths}>Today Deaths<p><strong> {response.todayDeaths}</strong></p></Paper>
                     </Grid>
                 </Grid>
-            </Container>
+                </div>
     )
 }
 

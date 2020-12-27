@@ -8,11 +8,12 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { fetchCountryData } from './api/endpoints';
 import { AppHeader } from "./components/AppHeader";
 import CountryDropdown from './components/CountryDropdown';
+import AppFooter from './components/AppFooter';
 
 function App() {
   
   return (
-    <Container className="spinner-grow text-light" maxWidth="md">
+    <Container maxWidth="md">
       <AppHeader />
       <h1 style={{textAlign: "center"}}>Global Statistics</h1>
       <ErrorBoundary>
@@ -27,6 +28,7 @@ function App() {
       <canvas id="CountryChart" width="400" height="400" aria-label="Country Time Series Data" role="img">
             
       </canvas>
+      <AppFooter />
     </Container>
   );
   

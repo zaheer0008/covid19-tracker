@@ -18,17 +18,17 @@ function GlobalStats() {
         flexGrow: 1,
       },
       cases: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         textAlign: 'center',        
         color: 'white',
         borderRadius: '20px',
-        background: 'DarkOrchid', //'linear-gradient(45deg,  lightblue 30%, rgb(126, 190, 211) 50%)',
+        background: 'DarkOrchid', 
         '&:hover': {
           background: 'DarkMagenta',
         }
       },
       recovered: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         textAlign: 'center',        
         color: 'white',
         borderRadius: '20px',
@@ -38,7 +38,7 @@ function GlobalStats() {
         }
       },
       deaths: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         textAlign: 'center',        
         color: 'white',
         borderRadius: '20px',
@@ -51,13 +51,7 @@ function GlobalStats() {
     const classes = useStyles();
 
   return (
-    <Container maxWidth="md" className="full-height">
-      {/* <Grid Container spacing={3}>
-        <Grid item xs>
-          <h2>Global Data</h2>
-        </Grid>
-      </Grid> */}
-      
+      <div>
       <Grid container spacing={3}>
         <Grid item xs>
           <Paper elevation={3} className={classes.cases}>Total Cases<p> <strong>{stats.cases}</strong> </p></Paper>
@@ -80,7 +74,7 @@ function GlobalStats() {
           <Paper className={classes.deaths}>Today Deaths<p><strong> {stats.todayDeaths}</strong></p></Paper>
         </Grid>
       </Grid>
-    </Container>
+      </div>
   )
 }
 
