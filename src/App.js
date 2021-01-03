@@ -15,20 +15,21 @@ function App() {
   return (
     <Container maxWidth="md">
       <AppHeader />
-      <h1 style={{textAlign: "center"}}>Global Statistics</h1>
+      <h1 style={{textAlign: "center", color: 'tomato'  }}>Global Statistics</h1>
       <ErrorBoundary>
       <Suspense fallback={<div className="loader"></div>}>
           <GlobalStats />
-          <canvas id="GlobalChart" width="400" height="400" aria-label="Global Time Series Data" role="img">
+          <canvas id="GlobalChart" width="400" height="250" aria-label="Global Time Series Data" role="img">
           
           </canvas><CountryDropdown />
       </Suspense>
       </ErrorBoundary>
       
-      <canvas id="CountryChart" width="400" height="400" aria-label="Country Time Series Data" role="img">
+      <canvas id="CountryChart" width="400" height="250" aria-label="Country Time Series Data" role="img">
             
       </canvas>
       <AppFooter />
+      
     </Container>
   );
   

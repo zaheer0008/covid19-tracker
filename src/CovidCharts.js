@@ -1,7 +1,6 @@
 import Chart from "chart.js";
 
 var tChartData = {
-    // labels: ['Red', 'Blue', 'Yellow'],
     datasets: [{
         label: 'Confirmed Cases',
         // data: [12,50,30,],
@@ -65,6 +64,7 @@ function GlobalTimeSeriesChart(ctx, data) {
         data: tChartData,
         options: tChartOptions
     });
+    timeSeriesChart.options.title = {display: true, text: "Global Time Series Data"};
     var dates = Object.keys(data.cases);
     var activeCases = Object.values(data.cases);
     var recovered = Object.values(data.recovered);
